@@ -1,0 +1,66 @@
+#1. Find the most frequent digit in the given no
+select the smallest number if there is a tie.
+i/o:
+1345324
+3
+Explanation:
+in the given number,
+3 present 2 times
+4 present 2 times
+(other numbers present lesser times)
+most frequent numbers are 3 and 4,
+small among the most frequent is 3.
+(another version of the program, select the biggest
+number if there is a tie)
+
+
+def most_frequent_digit(number):
+    # Count the occurrences of each digit
+    digit_counts = [0] * 10  # There are 10 possible digits (0 to 9)
+
+    # Iterate through each digit in the number
+    for digit in str(number):
+        digit_counts[int(digit)] += 1
+
+    # Find the maximum count
+    max_count = max(digit_counts)
+
+    # Find the smallest number with the maximum count
+    smallest_number = float('inf')  # Initialize with positive infinity
+    for i in range(10):
+        if digit_counts[i] == max_count:
+            smallest_number = min(smallest_number, i)
+
+    return smallest_number
+
+# Example usage
+input_number = 1345324
+result = most_frequent_digit(input_number)
+print(f"The most frequent digit is {result}")
+
+                                                        (OR)
+def most_frequent_digit(number):
+    # Count the occurrences of each digit
+    digit_counts = [0] * 10  # There are 10 possible digits (0 to 9)
+
+    # Iterate through each digit in the number
+    for digit in str(number):
+        digit_counts[int(digit)] += 1
+
+    # Find the maximum count
+    max_count = max(digit_counts)
+
+    # Find the largest number(s) with the maximum count
+    largest_numbers = [i for i in range(10) if digit_counts[i] == max_count]
+
+    # Select the largest number if there is a tie
+    result = max(largest_numbers)
+
+    return result
+
+# Example usage
+input_number = 1345324
+result = most_frequent_digit(input_number)
+print(f"The most frequent digit is {result}")
+
+                                                        
