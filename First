@@ -17,19 +17,31 @@ number if there is a tie)
 def most_frequent_digit(number):
     # Count the occurrences of each digit
     digit_counts = [0] * 10  # There are 10 possible digits (0 to 9)
+    # o/p:  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+
 
     # Iterate through each digit in the number
     for digit in str(number):
         digit_counts[int(digit)] += 1
+    # o/p: [0, 1, 1, 2, 2, 1, 0, 0, 0, 0]
 
     # Find the maximum count
     max_count = max(digit_counts)
+    # o/p: 2
 
     # Find the smallest number with the maximum count
     smallest_number = float('inf')  # Initialize with positive infinity
     for i in range(10):
         if digit_counts[i] == max_count:
             smallest_number = min(smallest_number, i)
+    # o/p:  For i = 0, digit_counts[0] is 0, so it's not considered.
+      For i = 1, digit_counts[1] is 1, not equal to max_count so it's not considered.
+      For i = 2, digit_counts[2] is 1, not equal to max_count so it's not considered.
+      For i = 3, digit_counts[3] is 2 (equal to max_count), so smallest_number is updated to 3.
+      For i = 4, digit_counts[4] is 2 (equal to max_count), so smallest_number remains 3.
+      For i = 5, digit_counts[5] is 1, so it's not considered.
+      For i = 6 to i = 9, none of them have counts equal to max_count, so they are not considered.
+
 
     return smallest_number
 
