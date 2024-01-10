@@ -75,4 +75,114 @@ input_number = 1345324
 result = most_frequent_digit(input_number)
 print(f"The most frequent digit is {result}")
 
-                                                        
+                                                    OR
+
+
+2. Find how many digits present only once in the given
+number
+i/o:
+124532566
+2
+Explanation:
+1 and 4 present once , so two is the answer
+
+
+list1 = [1, 2, 3, 4, 5, 1, 2, 3]
+dict1 = {}
+for i in list1:
+    if i in dict1:
+        dict1[i] += 1
+    else:
+        dict1[i] = 1
+count=0
+for j in dict1.values():
+    if j==1:
+        count+=1
+print(count)
+min_count = min(dict1.values())
+min_key = min(dict1, key=dict1.get)
+print("The minimum count is", min_count)
+print("The key of the minimum count is", min_key)
+                                     (OR)
+
+3.Palindrome possible: Find whether the given
+number can form a palindrome when we
+rearrange the digits of a number.
+I/O
+123123
+Yes
+1234
+No
+Explanation:
+Consider the number 123123 , it can create
+palindrome when rearrange the digits like
+123321,
+But the number 12345 cannot form
+palindrome.
+
+
+def can_form_palindrome(number):
+    # Convert the number to a string for easy iteration over digits
+    number_str = str(number)
+    
+    # Create a dictionary to store the frequency of each digit
+    digit_count = {}
+    
+    # Count the frequency of each digit
+    for digit in number_str:
+        digit_count[digit] = digit_count.get(digit, 0) + 1
+    
+    # Check the conditions for forming a palindrome
+    odd_count = 0
+    for count in digit_count.values():
+        if count % 2 != 0:
+            odd_count += 1
+    
+    if (len(number_str) % 2 == 0 and odd_count == 0) or (len(number_str) % 2 == 1 and odd_count == 1):
+        return True
+    else:
+        return False
+
+# Example usage:
+input_number1 = 123123
+input_number2 = 1234
+
+result1 = can_form_palindrome(input_number1)
+result2 = can_form_palindrome(input_number2)
+
+print(f"Can {input_number1} form a palindrome? {result1}")
+print(f"Can {input_number2} form a palindrome? {result2}")
+
+                                           (OR)
+
+def can_form_palindrome(number):
+    # Convert the number to a string for easy iteration over digits
+    number_str = str(number)
+    
+    # Create a dictionary to store the frequency of each digit
+    digit_count = {}
+    
+    # Count the frequency of each digit
+    for digit in number_str:
+        digit_count[digit] = digit_count.get(digit, 0) + 1
+    
+    # Check the conditions for forming a palindrome
+    even_count = 0
+    for count in digit_count.values():
+        if count % 2 == 0:
+            even_count += 1
+    
+    if (len(number_str) % 2 == 0 and even_count >=1) or (len(number_str) % 2 == 1 and even_count == 0):
+        return True
+    else:
+        return False
+
+# Example usage:
+input_number1 = 123123
+input_number2 = 1234
+
+result1 = can_form_palindrome(input_number1)
+result2 = can_form_palindrome(input_number2)
+
+print(f"Can {input_number1} form a palindrome? {result1}")
+print(f"Can {input_number2} form a palindrome? {result2}")
