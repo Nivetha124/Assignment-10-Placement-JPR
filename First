@@ -186,3 +186,36 @@ result2 = can_form_palindrome(input_number2)
 
 print(f"Can {input_number1} form a palindrome? {result1}")
 print(f"Can {input_number2} form a palindrome? {result2}")
+
+
+4. Get N elements one by one.
+The input should be entered in ascending order, if
+not stop getting the input.
+You have to display number of input given in
+order.
+I/O 1:
+6 ( no of elements)
+12
+18
+20
+30
+35
+50
+6 (this is output)
+I/O 2:
+5 ( no of element)
+23
+50
+45
+2( this is output)
+
+def N_element(element):
+    count=0
+    n=len(element)
+    for i in range(n-1):
+        if element[i]<element[i+1]:
+            count+=1
+    return count
+element=[24,50,45]
+print(N_element(element))
+
